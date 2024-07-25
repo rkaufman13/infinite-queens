@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+
+.square {
+  border:1px solid black;
+  height:80px;
+  width:80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  background-color: #eee;
+}
+
+.unselected {
+background-color: white;
+}
+
+
+  .icon {
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.125em;
+  }
