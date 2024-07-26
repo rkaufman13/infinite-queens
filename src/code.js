@@ -1,34 +1,35 @@
+import { solutions } from "./solutions";
+
 const rotateClockwise = (matrix) => {
-  return matrix[0].map((val, index) =>
-    matrix.map((row) => row[index]).reverse()
-  );
+  return matrix[0].map((val, index) => {
+    return matrix.map((row) => row[index]).reverse();
+  });
 };
 
 const mirrorAlongYAxis = (matrix) => {
-  return matrix.forEach((arr) => {
-    arr.reverse();
+  return matrix.map((arr) => {
+    return arr.reverse();
   });
 };
 
 const checkOneQueenInEachRow = (matrix) => {
   return matrix.every((arr) => {
-    if (arr.indexOf(1) == -1) {
+    if (arr.indexOf(1) === -1) {
       return false;
     }
-    if (arr.indexOf(1) != arr.lastIndexOf(1)) {
+    if (arr.indexOf(1) !== arr.lastIndexOf(1)) {
       return false;
     }
     return true;
   });
 };
 
-const checkSolution = (matrix) => {
-  let winning = false;
+export const checkSolution = (matrix) => {
   //one queen in each row
-  winning = checkOneQueenInEachRow(matrix);
+  const rowsAreGood = checkOneQueenInEachRow(matrix);
   //one queen in each column
   const rotatedMatrix = rotateClockwise(matrix);
-  winning = checkOneQueenInEachRow(rotatedMatrix);
+  const colsAreGood = checkOneQueenInEachRow(rotatedMatrix);
   //check diagonals
   const indices = [
     ...new Set(
@@ -37,24 +38,37 @@ const checkSolution = (matrix) => {
       })
     ),
   ];
-  winning = indices.length === 8;
-  return winning;
+  const diagonalsAreGood = indices.length === 8;
+  return rowsAreGood && colsAreGood && diagonalsAreGood;
 };
-
-const solution = [
-  [1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 1, 0, 0],
-  [0, 0, 1, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 1, 0],
-  [0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 0, 0, 0, 0],
-];
 
 export const generateSolution = () => {
   //generate a solution
-  return solution;
+  const randomIndex = Math.floor(Math.random() * 6);
+  let matrix = solutions[randomIndex];
+  let die = 0;
+  //perform some random operations a random number of times
+  while (die <= 4) {
+    //flip a coin
+    const coin = Math.random();
+    if (coin > 0.5) {
+      matrix = rotateClockwise(matrix);
+    } else {
+      matrix = mirrorAlongYAxis(matrix);
+    }
+    die = Math.floor(Math.random() * 6);
+  }
+  //we have now rotated and flipped the starting queens a few times. now we drop out all but 2-3 starters
+  let rows = [0, 1, 2, 3, 4, 5, 6, 7];
+
+  while (rows.length >= 6) {
+    rows.splice(rows.length * Math.random(), 1);
+  }
+  //this should be a list of indices that we can zero out
+  for (let index of rows) {
+    matrix[index] = new Array(8).fill(0);
+  }
+  return matrix;
 };
 
 const isSelected = (num) => {
@@ -65,10 +79,11 @@ export const generateGame = (solution) => {
   return solution.map((row, idx) => {
     return row.map((space, xidx) => {
       return {
+        id: `${xidx},${idx}`,
         x: xidx,
         y: idx,
         selected: isSelected(space),
-        permanent: true,
+        permanent: isSelected(space),
       };
     });
   });

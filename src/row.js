@@ -1,11 +1,17 @@
 import { Square } from "./square";
 
-export const Row = ({ yIndex, contents }) => {
+export const QueenRow = ({ contents, handleClick }) => {
   return contents.map((square) => {
     return (
-      <div className="row">
-        <Square y={square.y} x={square.x} selected={square.selected} />
-      </div>
+      <Square
+        y={square.y}
+        x={square.x}
+        selected={square.selected}
+        id={square.id}
+        key={square.id}
+        handleClick={() => handleClick(square.x, square.y)}
+        permanent={square.permanent}
+      />
     );
   });
 };

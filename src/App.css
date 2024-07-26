@@ -1,18 +1,31 @@
 .App {
   text-align: center;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+.parent-container {
+  width:500px;
+  max-width: 500px;
+}
 
+.container {
+  width:500px;
+  max-width: 500px;
+}
 .square {
   border:1px solid black;
-  height:80px;
-  width:80px;
+  height:50px;
+  
   display: flex;
+  flex-grow: unset;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 
-.selected {
+.permanent {
   background-color: #eee;
 }
 

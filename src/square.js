@@ -1,6 +1,21 @@
+import Col from "react-bootstrap/Col";
 import { Queen } from "./queen";
-export const Square = ({ selected }) => {
+
+export const Square = ({ selected, permanent, handleClick }) => {
   const selectedClass = selected ? "selected" : "unselected";
-  const classes = `square ${selectedClass}`;
-  return <div className={classes}>{selected && <Queen />}</div>;
+  const permaClass = permanent ? "permanent" : "";
+  const classes = `square ${selectedClass} ${permaClass}`;
+
+  const handleMaybeClick = () => {
+    if (!permanent) {
+      handleClick();
+    } else {
+    }
+  };
+
+  return (
+    <Col className={classes} onClick={handleMaybeClick}>
+      {selected && <Queen />}
+    </Col>
+  );
 };
