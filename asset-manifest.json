@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/infinite-queens/static/css/main.3acfcfee.css",
-    "main.js": "/infinite-queens/static/js/main.f0ee079a.js",
+    "main.css": "/infinite-queens/static/css/main.9e2b2ff6.css",
+    "main.js": "/infinite-queens/static/js/main.b4cc1417.js",
     "static/js/453.ca96d978.chunk.js": "/infinite-queens/static/js/453.ca96d978.chunk.js",
     "index.html": "/infinite-queens/index.html",
-    "main.3acfcfee.css.map": "/infinite-queens/static/css/main.3acfcfee.css.map",
-    "main.f0ee079a.js.map": "/infinite-queens/static/js/main.f0ee079a.js.map",
+    "main.9e2b2ff6.css.map": "/infinite-queens/static/css/main.9e2b2ff6.css.map",
+    "main.b4cc1417.js.map": "/infinite-queens/static/js/main.b4cc1417.js.map",
     "453.ca96d978.chunk.js.map": "/infinite-queens/static/js/453.ca96d978.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3acfcfee.css",
-    "static/js/main.f0ee079a.js"
+    "static/css/main.9e2b2ff6.css",
+    "static/js/main.b4cc1417.js"
   ]
 }
