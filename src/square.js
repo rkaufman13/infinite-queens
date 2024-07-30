@@ -2,9 +2,9 @@ import Col from "react-bootstrap/Col";
 import { Queen } from "./queen";
 
 export const Square = ({ selected, permanent, handleClick }) => {
-  const selectedClass = selected ? "selected" : "unselected";
+  //const selectedClass = selected ? "selected" : "unselected";
   const permaClass = permanent ? "permanent" : "";
-  const classes = `square ${selectedClass} ${permaClass}`;
+  const classes = `square ${permaClass}`;
 
   const handleMaybeClick = () => {
     if (!permanent) {

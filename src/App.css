@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   display:flex;
@@ -5,6 +6,8 @@
   flex-direction: column;
 }
 
+/*media queries */
+@media screen and (min-width: 600px){
 .parent-container {
   width:500px;
   max-width: 500px;
@@ -14,28 +17,61 @@
   width:500px;
   max-width: 500px;
 }
+
 .square {
-  border:1px solid black;
+
   height:50px;
-  
   display: flex;
   flex-grow: unset;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #444;
 }
 
-.permanent {
+.icon {
+  width: 2em;
+  height: 2em;
+  vertical-align: -0.125em;
+}
+}
+
+@media screen and (max-width: 599px){
+  .parent-container {
+    width:240px;
+    max-width: 240px;
+  }
+  
+  .container {
+    width:240px;
+    max-width: 240px;
+  }
+  
+  .square {
+  
+    height:30px;
+    display: flex;
+    flex-grow: unset;
+    align-items: center;
+    justify-content: center;
+    background-color: #444;
+  }
+  
+  .icon {
+ transform:scale(250%)
+  }
+  
+}
+
+
+.row:nth-child(odd) .square:nth-child(odd),
+.row:nth-child(even) .square:nth-child(even) {
   background-color: #eee;
 }
 
-.unselected {
-background-color: white;
+.permanent {
+  background-color: #311 !important;
 }
 
+  
 
-  .icon {
-    width: 2em;
-    height: 2em;
-    vertical-align: -0.125em;
-  }
+  

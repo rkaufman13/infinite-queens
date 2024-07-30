@@ -45,7 +45,15 @@ export const checkSolution = (matrix) => {
 export const generateSolution = () => {
   //generate a solution
   const randomIndex = Math.floor(Math.random() * 6);
-  let matrix = solutions[randomIndex];
+  const solution = solutions[randomIndex];
+
+  let matrix = Array.from({ length: 8 }, () =>
+    Array.from({ length: 8 }, () => 0)
+  );
+  for (let i = 0; i < 8; i++) {
+    matrix[i][solution[i]] = 1;
+  }
+
   let die = 0;
   //perform some random operations a random number of times
   while (die <= 4) {
